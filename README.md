@@ -4,7 +4,7 @@ The so called “Israeli Queue” is a single server polling system with batch s
 
 ## Usage
 
-To install: `npm install iqjs` 
+To install: `npm install israeli-queue` 
 
 ### require
     

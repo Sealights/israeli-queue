@@ -1,6 +1,6 @@
 {
   "name": "israeli-queue",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "The so called “Israeli Queue” is a single server polling system with batch service of an unlimited size, where the next queue to be visited is the one in which the first customer in line has been waiting for the longest time.",
   "main": "index.js",
   "scripts": {

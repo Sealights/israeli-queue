@@ -8,7 +8,7 @@ To install: `npm install israeli-queue`
 
 ### require
     
-    const IQ = require('../israeli-queue');
+    const IQ = require('israeli-queue');
     
     let q1 = new IQ();
     let q2 = new IQ();

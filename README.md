@@ -27,7 +27,7 @@ Removes and returns the element of the priority queue which is first in line. Si
 
 Inserts each given argument into the appropriate place in the priority queue. Returns the index of the inserted item.
 
-### length
+### length()
 
 Integer property which reflects the number of elements in the priority queue.
 

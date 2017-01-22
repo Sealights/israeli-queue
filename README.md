@@ -1,6 +1,21 @@
 # IQ.js :: The Israeli Queue 
 
-The so called “Israeli Queue” is a single server polling system with batch service of an unlimited size, where the next queue to be visited is the one in which the first customer in line has been waiting for the longest time.
+a priority queue with the following order rule: After completion of a visit at a queue, the next
+queue to be served is the one where its first customer in line has been
+waiting in the system for the longest time. That is, the criterion for
+selecting the next queue to visit and serve is an age-based one. This type of
+service discipline was termed the Israeli Queue, illustrated vividly as follows:
+A new arriving customer may find in the system up to N groups, where
+each group is headed by a “leader.” This new arrival looks for a “friend”
+among all group leaders in the system. If he (“he” stands for “she” as well)
+finds such a leader, he joins him and his group and waits with all the
+group’s members to be served in a batch mode. That is, the whole group is served at one service period, while the service duration is not affected
+by the size of the batch. For example, this queue discipline represents a
+physical waiting line for buying tickets to a movie, theater, or rock-concert
+performance. A new arrival that finds a friend already standing in line joins
+him and his group. When the “leader” reaches the cashier, he buys tickets
+for the entire group. It is assumed that the buying process is (almost) not
+affected by the number of tickets purchased.
 
 ## Usage
 

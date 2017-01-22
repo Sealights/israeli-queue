@@ -1,0 +1,21 @@
+{
+  "name": "israeli-queue",
+  "version": "1.0.0",
+  "description": "The so called “Israeli Queue” is a single server polling system with batch service of an unlimited size, where the next queue to be visited is the one in which the first customer in line has been waiting for the longest time.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Dror Arazi <dror@sealights.io> (www.sealights.io)",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "keywords": [
+    "israeli",
+    "priority",
+    "queue"
+  ]
+}

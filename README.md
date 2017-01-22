@@ -45,4 +45,4 @@ Dror Arazi (dror@sealights.io)
 
 ## License
 
-ISC
+MIT

@@ -8,6 +8,10 @@
   },
   "author": "Dror Arazi <dror@sealights.io> (www.sealights.io)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sealights/israeli-queue.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.5.0",

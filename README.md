@@ -16,6 +16,7 @@ performance. A new arrival that finds a friend already standing in line joins
 him and his group. When the “leader” reaches the cashier, he buys tickets
 for the entire group. It is assumed that the buying process is (almost) not
 affected by the number of tickets purchased.
+<http://www.math.tau.ac.il/~uriy/Papers/IQ-with-Priorities.pdf>
 
 ## Usage
 
@@ -26,8 +27,14 @@ To install: `npm install israeli-queue`
     const IQ = require('israeli-queue');
     
     let q1 = new IQ();
-    let q2 = new IQ();
-
+    q1.dequeue(); // []
+    q1.enqueue({o:"a"}); // [{"o":"a"}]
+    q1.enqueue({o:"c"}); // [{"o":"a"},{"o":"c"}]
+    q1.enqueue({o:"b"}, {o:"a"}); // [{"o":"a"},{"o":"b"},{"o":"c"}]
+    
+    q1.peek(); // { o: 'a' }
+    q1.length(); // 3
+    
 ## API
 
 ### *constructor*()

@@ -1,22 +1,35 @@
 'use strict';
 
+const _ = require('lodash'),
+    hash = require('object-hash');
+
 module.exports = class IQ {
     constructor( queue = [], members = {}) {
         this._queue = queue;
         this._members = members;
     }
     enqueue(o, friend = false) {
-        this._members[o] = !!(this._members[o]) ? ++(this._members[o]) : 1;
-        if (friend && this._members[friend]) {
-            let index = (this._queue.indexOf(friend))+1;
-            this._queue.splice(index, 0, o);
-            return index+1;
+        const oKey = o?(typeof o==='object')?hash(o):o:false,
+            friendKey = friend?(typeof friend==='object')?hash(friend):friend:false;
+        this._members[oKey] = !!(this._members[oKey]) ? ++(this._members[oKey]) : 1;
+        if (friend && this._members[friendKey]) {
+            let index = (typeof friend==='object')?false:(this._queue.indexOf(friend))+1;
+            if (index) {
+                this._queue.splice(index, 0, o);
+                return index + 1;
+            }
+            index = _.findIndex(this._queue, (member) => {
+                return hash(member)==friendKey;
+            });
+            this._queue.splice(++index, 0, o);
+            return index;
         }
         return this._queue.push(o);
     }
     dequeue() {
-        let o = (this.length())?this._queue.shift():false;
-        o && (this._members[o] = (this._members[o]==1) ? this._members[o]=false : --(this._members[o]));
+        const o = (this.length())?this._queue.shift():false,
+            oKey = o?(typeof o==='object')?hash(o):o:false;
+        o && (this._members[oKey] = (this._members[oKey]==1) ? this._members[oKey]=false : --(this._members[oKey]));
         return o;
     }
     peek() {

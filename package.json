@@ -1,16 +1,18 @@
 {
   "name": "israeli-queue",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "in-memory israeli-queue influenced by: http://www.math.tau.ac.il/~uriy/Papers/IQ-with-Priorities.pdf",
   "main": "index.js",
-  "scripts": {
-    "test": "mocha"
-  },
   "author": "Dror Arazi <dror@sealights.io> (www.sealights.io)",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/Sealights/israeli-queue.git"
+  },
+  "scripts": {
+    "test": "mocha",
+    "cover": "istanbul cover --report html node_modules/mocha/bin/_mocha  -- -R spec",
+    "mutate": "stryker run stryker.conf.js"
   },
   "dependencies": {
     "lodash": "^4.17.4",
@@ -18,7 +20,11 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "stryker": "^0.5.7",
+    "stryker-api": "^0.4.2",
+    "stryker-html-reporter": "^0.3.0",
+    "stryker-mocha-runner": "^0.2.0"
   },
   "keywords": [
     "israeli",

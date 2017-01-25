@@ -9,14 +9,15 @@ module.exports = class IQ {
         this._members = members;
     }
     enqueue(o, friend = false) {
-        const oKey = o?(typeof o==='object')?hash(o):o:false,
+        if (!o) return false;
+        const oKey = (typeof o==='object')?hash(o):o,
             friendKey = friend?(typeof friend==='object')?hash(friend):friend:false;
-        this._members[oKey] = !!(this._members[oKey]) ? ++(this._members[oKey]) : 1;
+        this._members[oKey] = (this._members[oKey]) ? ++(this._members[oKey]) : 1;
         if (friend && this._members[friendKey]) {
             let index = (typeof friend==='object')?false:(this._queue.indexOf(friend))+1;
             if (index) {
                 this._queue.splice(index, 0, o);
-                return index + 1;
+                return ++index;
             }
             index = _.findIndex(this._queue, (member) => {
                 return hash(member)==friendKey;

@@ -13,6 +13,17 @@ describe('IQ', () => {
             queue = new IQ();
         });
 
+        it('no member', () => {
+            queue.enqueue();
+            queue.enqueue(undefined, undefined);
+
+            queue.length().should.equal(0);
+            queue.peek().should.equal(false);
+            queue.dequeue().should.equal(false);
+
+            queue.toString().should.equal("[]");
+        });
+
         it('one simple member', () => {
             queue.enqueue(1);
 

@@ -23,7 +23,7 @@ module.exports = class IQ {
                 return hash(member)==friendKey;
             });
             this._queue.splice(++index, 0, o);
-            return index;
+            return ++index;
         }
         return this._queue.push(o);
     }

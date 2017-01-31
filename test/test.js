@@ -14,8 +14,8 @@ describe('IQ', () => {
         });
 
         it('no member', () => {
-            queue.enqueue();
-            queue.enqueue(undefined, undefined);
+            queue.enqueue().should.equal(false);
+            queue.enqueue(undefined, undefined).should.equal(false);
 
             queue.length().should.equal(0);
             queue.peek().should.equal(false);
@@ -25,7 +25,7 @@ describe('IQ', () => {
         });
 
         it('one simple member', () => {
-            queue.enqueue(1);
+            queue.enqueue(1).should.equal(1);
 
             queue.length().should.equal(1);
             queue.peek().should.equal(1);
@@ -37,8 +37,8 @@ describe('IQ', () => {
         });
 
         it('many simple members', () => {
-            queue.enqueue(1);
-            queue.enqueue(2);
+            queue.enqueue(1).should.equal(1);
+            queue.enqueue(2).should.equal(2);
 
             queue.length().should.equal(2);
             queue.peek().should.equal(1);
@@ -54,10 +54,10 @@ describe('IQ', () => {
         });
 
         it('many israeli members', () => {
-            queue.enqueue(1,2);
-            queue.enqueue(2,3);
-            queue.enqueue('a', 1);
-            queue.enqueue('b', 'a');
+            queue.enqueue(1,2).should.equal(1);
+            queue.enqueue(2,3).should.equal(2);
+            queue.enqueue('a', 1).should.equal(2);
+            queue.enqueue('b', 'a').should.equal(3);
 
             queue.length().should.equal(4);
             queue.peek().should.equal(1);
@@ -81,16 +81,16 @@ describe('IQ', () => {
 
             // replay to test dequeue went clean
 
-            queue.enqueue(1,2);
-            queue.enqueue(2,3);
-            queue.enqueue('a', 1);
-            queue.enqueue('b', 'a');
+            queue.enqueue(1,2).should.equal(1);
+            queue.enqueue(2,3).should.equal(2);
+            queue.enqueue('a', 1).should.equal(2);
+            queue.enqueue('b', 'a').should.equal(3);
 
             queue.length().should.equal(4);
             queue.peek().should.equal(1);
             queue.dequeue().should.equal(1);
 
-            queue.enqueue('c', 1);
+            queue.enqueue('c', 1).should.equal(4);
 
             queue.length().should.equal(4);
             queue.peek().should.equal('a');
@@ -114,10 +114,10 @@ describe('IQ', () => {
         });
 
         it('israeli members with duplication', () => {
-            queue.enqueue(1);
-            queue.enqueue(2);
-            queue.enqueue(2);
-            queue.enqueue(3, 2);
+            queue.enqueue(1).should.equal(1);
+            queue.enqueue(2).should.equal(2);
+            queue.enqueue(2).should.equal(3);
+            queue.enqueue(3, 2).should.equal(3);
 
             queue.length().should.equal(4);
             queue.peek().should.equal(1);
@@ -131,8 +131,8 @@ describe('IQ', () => {
             queue.peek().should.equal(3);
             queue.dequeue().should.equal(3);
 
-            queue.enqueue(1);
-            queue.enqueue(2);
+            queue.enqueue(1).should.equal(2);
+            queue.enqueue(2).should.equal(3);
 
             queue.length().should.equal(3);
             queue.peek().should.equal(2);
@@ -159,7 +159,7 @@ describe('IQ', () => {
         });
 
         it('one simple member', () => {
-            queue.enqueue({o:1});
+            queue.enqueue({o:1}).should.equal(1);
 
             queue.length().should.equal(1);
             queue.peek().should.eql({o:1});
@@ -171,8 +171,8 @@ describe('IQ', () => {
         });
 
         it('many simple members', () => {
-            queue.enqueue({o:1});
-            queue.enqueue({o:2});
+            queue.enqueue({o:1}).should.equal(1);
+            queue.enqueue({o:2}).should.equal(2);
 
             queue.length().should.equal(2);
             queue.peek().should.eql({o:1});
@@ -188,10 +188,10 @@ describe('IQ', () => {
         });
 
         it('many israeli members', () => {
-            queue.enqueue({o:1},{o:2});
-            queue.enqueue({o:2},{o:3});
-            queue.enqueue({o:'a'}, {o:1});
-            queue.enqueue({o:'b'}, {o:'a'});
+            queue.enqueue({o:1},{o:2}).should.equal(1);
+            queue.enqueue({o:2},{o:3}).should.equal(2);
+            queue.enqueue({o:'a'}, {o:1}).should.equal(2);
+            queue.enqueue({o:'b'}, {o:'a'}).should.equal(3);
 
             queue.length().should.equal(4);
             queue.peek().should.eql({o:1});
@@ -215,16 +215,16 @@ describe('IQ', () => {
 
             // replay to test dequeue went clean
 
-            queue.enqueue({o:1},{o:2});
-            queue.enqueue({o:2},{o:3});
-            queue.enqueue({o:'a'}, {o:1});
-            queue.enqueue({o:'b'}, {o:'a'});
+            queue.enqueue({o:1},{o:2}).should.equal(1);
+            queue.enqueue({o:2},{o:3}).should.equal(2);
+            queue.enqueue({o:'a'}, {o:1}).should.equal(2);
+            queue.enqueue({o:'b'}, {o:'a'}).should.equal(3);
 
             queue.length().should.equal(4);
             queue.peek().should.eql({o:1});
             queue.dequeue().should.eql({o:1});
 
-            queue.enqueue({o:'c'}, {o:1});
+            queue.enqueue({o:'c'}, {o:1}).should.equal(4);
 
             queue.length().should.equal(4);
             queue.peek().should.eql({o:'a'});
@@ -248,10 +248,10 @@ describe('IQ', () => {
         });
 
         it('israeli members with duplication', () => {
-            queue.enqueue({o:1});
-            queue.enqueue({o:2});
-            queue.enqueue({o:2});
-            queue.enqueue({o:3}, {o:2});
+            queue.enqueue({o:1}).should.equal(1);
+            queue.enqueue({o:2}).should.equal(2);
+            queue.enqueue({o:2}).should.equal(3);
+            queue.enqueue({o:3}, {o:2}).should.equal(3);
 
             queue.length().should.equal(4);
             queue.peek().should.eql({o:1});
@@ -265,8 +265,8 @@ describe('IQ', () => {
             queue.peek().should.eql({o:3});
             queue.dequeue().should.eql({o:3});
 
-            queue.enqueue({o:1});
-            queue.enqueue({o:2});
+            queue.enqueue({o:1}).should.equal(2);
+            queue.enqueue({o:2}).should.equal(3);
 
             queue.length().should.equal(3);
             queue.peek().should.eql({o:2});

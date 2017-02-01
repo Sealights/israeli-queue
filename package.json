@@ -1,6 +1,6 @@
 {
   "name": "israeli-queue",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "in-memory israeli-queue influenced by: http://www.math.tau.ac.il/~uriy/Papers/IQ-with-Priorities.pdf",
   "main": "index.js",
   "author": "Dror Arazi <dror@sealights.io> (www.sealights.io)",

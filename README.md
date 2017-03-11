@@ -43,7 +43,7 @@ The constructor will create an in-memory Israeli queue data structure
 
 ### dequeue()
 
-Removes and returns the element of the priority queue which is first in line. Simply returns `false` if the priority queue is empty.
+Removes and returns the element of the priority queue which is first in line. Simply returns `undefined` if the priority queue is empty.
 
 ### enqueue(element, friend_element)
 
@@ -55,7 +55,7 @@ Integer property which reflects the number of elements in the priority queue.
 
 ### peek()
 
-Returns the element of the priority queue which is first in line without removing it.
+Returns the element of the priority queue which is first in line without removing it. Simply returns `null` if the priority queue is empty.
 
 ### toString()
 

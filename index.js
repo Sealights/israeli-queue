@@ -28,13 +28,13 @@ module.exports = class IQ {
         return this._queue.push(o);
     }
     dequeue() {
-        const o = (this.length())?this._queue.shift():false,
+        const o = (this.length())?this._queue.shift():undefined,
             oKey = o?(typeof o==='object')?hash(o):o:false;
         o && (this._members[oKey] = (this._members[oKey]==1) ? this._members[oKey]=false : --(this._members[oKey]));
         return o;
     }
     peek() {
-        return (this.length())?this._queue[0]:false;
+        return (this.length())?this._queue[0]:null;
     }
     length() {
         return this._queue.length;

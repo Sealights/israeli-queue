@@ -1,6 +1,7 @@
 'use strict';
 
 const chai = require('chai'),
+    assert = require('assert'),
     IQ = require('../index');
 
 chai.should();
@@ -18,8 +19,8 @@ describe('IQ', () => {
             queue.enqueue(undefined, undefined).should.equal(false);
 
             queue.length().should.equal(0);
-            queue.peek().should.equal(false);
-            queue.dequeue().should.equal(false);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
 
             queue.toString().should.equal("[]");
         });
@@ -32,8 +33,8 @@ describe('IQ', () => {
             queue.dequeue().should.equal(1);
 
             queue.length().should.equal(0);
-            queue.peek().should.equal(false);
-            queue.dequeue().should.equal(false);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
         });
 
         it('many simple members', () => {
@@ -49,8 +50,8 @@ describe('IQ', () => {
             queue.dequeue().should.equal(2);
 
             queue.length().should.equal(0);
-            queue.peek().should.equal(false);
-            queue.dequeue().should.equal(false);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
         });
 
         it('many israeli members', () => {
@@ -76,8 +77,8 @@ describe('IQ', () => {
             queue.dequeue().should.equal(2);
 
             queue.length().should.equal(0);
-            queue.peek().should.equal(false);
-            queue.dequeue().should.equal(false);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
 
             // replay to test dequeue went clean
 
@@ -109,8 +110,8 @@ describe('IQ', () => {
             queue.dequeue().should.equal('c');
 
             queue.length().should.equal(0);
-            queue.peek().should.equal(false);
-            queue.dequeue().should.equal(false);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
         });
 
         it('israeli members with duplication', () => {
@@ -147,8 +148,8 @@ describe('IQ', () => {
             queue.dequeue().should.equal(2);
 
             queue.length().should.equal(0);
-            queue.peek().should.equal(false);
-            queue.dequeue().should.equal(false);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
         });
     });
     describe('#object', () => {
@@ -166,8 +167,8 @@ describe('IQ', () => {
             queue.dequeue().should.eql({o:1});
 
             queue.length().should.equal(0);
-            queue.peek().should.equal(false);
-            queue.dequeue().should.equal(false);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
         });
 
         it('many simple members', () => {
@@ -183,8 +184,8 @@ describe('IQ', () => {
             queue.dequeue().should.eql({o:2});
 
             queue.length().should.equal(0);
-            queue.peek().should.equal(false);
-            queue.dequeue().should.equal(false);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
         });
 
         it('many israeli members', () => {
@@ -210,8 +211,8 @@ describe('IQ', () => {
             queue.dequeue().should.eql({o:2});
 
             queue.length().should.equal(0);
-            queue.peek().should.equal(false);
-            queue.dequeue().should.equal(false);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
 
             // replay to test dequeue went clean
 
@@ -243,8 +244,8 @@ describe('IQ', () => {
             queue.dequeue().should.eql({o:'c'});
 
             queue.length().should.equal(0);
-            queue.peek().should.equal(false);
-            queue.dequeue().should.equal(false);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
         });
 
         it('israeli members with duplication', () => {
@@ -281,8 +282,8 @@ describe('IQ', () => {
             queue.dequeue().should.eql({o:2});
 
             queue.length().should.equal(0);
-            queue.peek().should.equal(false);
-            queue.dequeue().should.equal(false);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
         });
     });
 });

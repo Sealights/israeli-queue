@@ -19,7 +19,7 @@ describe('IQ', () => {
             queue.enqueue(undefined, undefined).should.equal(false);
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
 
             queue.toString().should.equal("[]");
@@ -56,7 +56,7 @@ describe('IQ', () => {
             queue.enqueue(undefined).should.equal(false);
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
         });
 
@@ -68,7 +68,7 @@ describe('IQ', () => {
             queue.dequeue().should.equal(1);
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
         });
 
@@ -85,7 +85,7 @@ describe('IQ', () => {
             queue.dequeue().should.equal(2);
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
         });
 
@@ -112,7 +112,7 @@ describe('IQ', () => {
             queue.dequeue().should.equal(2);
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
 
             // replay to test dequeue went clean
@@ -145,7 +145,7 @@ describe('IQ', () => {
             queue.dequeue().should.equal('c');
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
         });
 
@@ -183,7 +183,7 @@ describe('IQ', () => {
             queue.dequeue().should.equal(2);
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
         });
     });
@@ -202,7 +202,7 @@ describe('IQ', () => {
             queue.dequeue().should.eql({o:1});
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
         });
 
@@ -219,7 +219,7 @@ describe('IQ', () => {
             queue.dequeue().should.eql({o:2});
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
         });
 
@@ -246,7 +246,7 @@ describe('IQ', () => {
             queue.dequeue().should.eql({o:2});
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
 
             // replay to test dequeue went clean
@@ -279,7 +279,7 @@ describe('IQ', () => {
             queue.dequeue().should.eql({o:'c'});
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
         });
 
@@ -317,7 +317,7 @@ describe('IQ', () => {
             queue.dequeue().should.eql({o:2});
 
             queue.length().should.equal(0);
-            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.peek(), undefined);
             assert.strictEqual(queue.dequeue(), undefined);
         });
     });

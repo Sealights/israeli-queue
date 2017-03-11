@@ -9,11 +9,11 @@ module.exports = class IQ {
         this._members = members;
     }
     enqueue(o, friend = false) {
-        if (!o) return false;
+        if (o==undefined) return false;
         const oKey = (typeof o==='object')?hash(o):o,
-            friendKey = friend?(typeof friend==='object')?hash(friend):friend:false;
+            friendKey = (friend!=null)?(typeof friend==='object')?hash(friend):friend:null;
         this._members[oKey] = (this._members[oKey]) ? ++(this._members[oKey]) : 1;
-        if (friend && this._members[friendKey]) {
+        if (friend!=undefined && this._members[friendKey]) {
             let index = (typeof friend==='object')?false:(this._queue.indexOf(friend))+1;
             if (index) {
                 this._queue.splice(index, 0, o);

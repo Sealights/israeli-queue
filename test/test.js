@@ -25,6 +25,41 @@ describe('IQ', () => {
             queue.toString().should.equal("[]");
         });
 
+        it('falsy members', () => {
+            queue.enqueue(0,2).should.equal(1);
+            queue.enqueue(false,3).should.equal(2);
+            queue.enqueue('a', 0).should.equal(2);
+            queue.enqueue('c', false).should.equal(4);
+            queue.enqueue('b', false).should.equal(4);
+
+            queue.length().should.equal(5);
+            queue.peek().should.equal(0);
+            queue.dequeue().should.equal(0);
+
+            queue.length().should.equal(4);
+            queue.peek().should.equal('a');
+            queue.dequeue().should.equal('a');
+
+            queue.length().should.equal(3);
+            queue.peek().should.equal(false);
+            queue.dequeue().should.equal(false);
+
+            queue.length().should.equal(2);
+            queue.peek().should.equal('b');
+            queue.dequeue().should.equal('b');
+
+            queue.length().should.equal(1);
+            queue.peek().should.equal('c');
+            queue.dequeue().should.equal('c');
+
+            queue.enqueue(null).should.equal(false);
+            queue.enqueue(undefined).should.equal(false);
+
+            queue.length().should.equal(0);
+            assert.strictEqual(queue.peek(), null);
+            assert.strictEqual(queue.dequeue(), undefined);
+        });
+
         it('one simple member', () => {
             queue.enqueue(1).should.equal(1);
 

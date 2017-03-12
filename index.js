@@ -3,13 +3,19 @@
 const _ = require('lodash'),
     hash = require('object-hash');
 
+function EmptyQueue(message) {
+    this.name = "EmptyQueue";
+    this.message = (message || "");
+}
+EmptyQueue.prototype = Error.prototype;
+
 module.exports = class IQ {
     constructor( queue = [], members = {}) {
         this._queue = queue;
         this._members = members;
     }
     enqueue(o, friend = false) {
-        if (o==undefined) return false;
+        if (o===undefined) throw new EmptyQueue();
         const oKey = (typeof o==='object')?hash(o):o,
             friendKey = (friend!=null)?(typeof friend==='object')?hash(friend):friend:null;
         this._members[oKey] = (this._members[oKey]) ? ++(this._members[oKey]) : 1;
